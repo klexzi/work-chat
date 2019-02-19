@@ -1,0 +1,9 @@
+.page-home {
+  height: 100vh;
+}
+
+@media only screen and (max-width: 1200px) {
+  .page-home {
+    height: 100%;
+  }
+}
