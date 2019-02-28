@@ -12,6 +12,6 @@ describe("<Button />", () => {
 
   it("should render the props classes", () => {
     console.log(wrapper.debug());
-    expect(wrapper.find(".btn")).toBeTruthy();
+    expect(wrapper.find(".btn")).toHaveLength(1);
   });
 });

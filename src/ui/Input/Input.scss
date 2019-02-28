@@ -1,0 +1,30 @@
+.input-bg {
+  background-color: #eaeaea;
+  color: #707070;
+}
+
+.input-group-text {
+  background: #eaeaea;
+  border-right: none;
+  border-radius: 50px 0 0 50px;
+  text-align: center;
+  color: #1b1b1b;
+}
+
+.input-field {
+  border-left: none;
+  border-radius: 0 50px 50px 0;
+}
+
+.input-field:focus {
+  border-color: #122b52;
+  box-shadow: 0 0 0 0.2rem rgba(18, 43, 82, 0.25);
+}
+
+.form-control.is-invalid {
+  border-color: #ced4da;
+  border-radius: 0 50px 50px 0;
+}
+.input-group > .form-control:not(:last-child) {
+  border-radius: 0 50px 50px 0;
+}

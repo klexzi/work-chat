@@ -1,0 +1,10 @@
+.panel {
+  min-height: 600px;
+  border-radius: 30px 30px;
+}
+@media (max-width: 768px) {
+  .panel {
+    height: 100vh;
+    border-radius: 0;
+  }
+}

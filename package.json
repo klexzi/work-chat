@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "node-sass": "^4.11.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
@@ -11,7 +12,8 @@
     "react-scripts": "2.1.5",
     "redux": "^4.0.1",
     "redux-form": "^8.1.0",
-    "redux-saga": "^1.0.1"
+    "redux-saga": "^1.0.1",
+    "sinon": "^7.2.4"
   },
   "scripts": {
     "start": "react-scripts start",

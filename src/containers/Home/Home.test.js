@@ -7,7 +7,7 @@ import "../../utils/enzyme-config";
 describe("<Home />", () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = mount(<Home />);
+    wrapper = shallow(<Home />);
   });
 
   it("should render the componen", () => {

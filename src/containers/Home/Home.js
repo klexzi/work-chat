@@ -1,6 +1,6 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
-import Frag from "../../hoc/Frag/Frag";
 import Button from "../../ui/Button/Button";
 import chatImg1 from "../../assets/chat-img-1-2x.png";
 import bgImg from "../../assets/bg-1-2x.png";
@@ -15,7 +15,7 @@ class Home extends Component {
   };
   render() {
     return (
-      <div style={this.styles} className="page-home px-3 px-md-0">
+      <div style={this.styles} className="page px-3 px-md-0">
         <div className="container mx-auto px-2 py-md-5 py-3">
           <h3 className="display-4">Work Chat</h3>
         </div>
@@ -33,16 +33,21 @@ class Home extends Component {
               dui vivamus arcu. Rhoncus aenean vel elit scelerisque mauris
               pellentesque. Ultrices dui sapien eget mi.
             </p>
-            <Button classes="btn btn-lg primary-bg text-light my-xs-4">
+            <Button classes="btn btn-lg primary-bg text-light rounded-pill my-xs-4">
               Get Started
             </Button>
-            <Button classes="btn btn-lg bg-light shadow ml-md-2 text-dark">
-              Login
-            </Button>
+            <Link to="/login">
+              <Button classes="btn btn-lg bg-light shadow ml-md-2 text-dark rounded-pill">
+                Login
+              </Button>
+            </Link>
           </div>
           <div className="col-md-5 mx-auto my-4">
-            {" "}
-            <img src={chatImg1} className="img-fluid d-none d-md-block" />{" "}
+            <img
+              src={chatImg1}
+              className="img-fluid d-none d-md-block"
+              alt="chat svg"
+            />
           </div>
         </div>
       </div>
