@@ -33,9 +33,12 @@ class Home extends Component {
               dui vivamus arcu. Rhoncus aenean vel elit scelerisque mauris
               pellentesque. Ultrices dui sapien eget mi.
             </p>
-            <Button classes="btn btn-lg primary-bg text-light rounded-pill my-xs-4">
-              Get Started
-            </Button>
+            <Link to="/signup">
+              <Button classes="btn btn-lg primary-bg text-light rounded-pill my-xs-4">
+                Get Started
+              </Button>
+            </Link>
+
             <Link to="/login">
               <Button classes="btn btn-lg bg-light shadow ml-md-2 text-dark rounded-pill">
                 Login

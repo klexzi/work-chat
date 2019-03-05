@@ -9,7 +9,7 @@ const AsyncImport = importComponent => {
     }
     render() {
       const C = this.state.component;
-      return C ? <C {...this.props} /> : null;
+      return C ? <C {...this.props} /> : <div> loading...</div>;
     }
   };
 };

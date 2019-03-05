@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { reduxForm, reset, Field } from "redux-form";
+import { reduxForm, Field } from "redux-form";
 import { Link } from "react-router-dom";
 import Button from "../../ui/Button/Button";
 import Input from "../../ui/Input/Input";
@@ -7,25 +7,25 @@ import Input from "../../ui/Input/Input";
 const LoginForm = props => {
   return (
     <React.Fragment>
-      <h4 className="text-center mt-5 mt-md-0 mb-3 mb-md-5">WorkChat Login</h4>
+      <h4 className="text-center mt-2 mt-md-0 mb-3 mb-md-5">WorkChat Login</h4>
       <form onSubmit={props.handleSubmit(onSubmit)}>
         <div className="mb-4">
           <Field
+            component={Input}
             className="mb-4"
             name="email"
             type="email"
             label="Email"
-            uiFor="login"
-            component={Input}
+            notification={false}
           />
         </div>
         <div className="mb-4">
           <Field
+            component={Input}
             name="password"
             type="password"
             label="Password"
-            uiFor="login"
-            component={Input}
+            notification={false}
           />
         </div>
 
@@ -61,17 +61,6 @@ const validate = values => {
   }
   return errors;
 };
-
-const renderField = ({
-  input,
-  label,
-  type,
-  meta: { touched, error, warning }
-}) => (
-  <div>
-    <input {...input} placeholder={label} type={type} />
-  </div>
-);
 
 export default reduxForm({
   form: "loginForm", // a unique identifier for this form

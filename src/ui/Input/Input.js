@@ -4,13 +4,13 @@ import PropTypes from "prop-types";
 import "./Input.scss";
 
 const Input = ({
-  uiFor,
+  notification,
   input,
   label,
   type,
   meta: { touched, error, warning } = {}
 }) => {
-  let isValid = uiFor === "login" ? "" : "is-valid";
+  let isValid = notification ? "" : "is-valid";
   let iconClass;
   switch (type) {
     case "email":
@@ -19,10 +19,18 @@ const Input = ({
     case "password":
       iconClass = "fas fa-lock";
       break;
+    case "name":
+      iconClass = "fas fa-user";
+      break;
+    case "phone":
+      iconClass = "fas fa-phone";
+      break;
+    case "organization-name":
+      iconClass = "fas fa-globe";
+      break;
     default:
       iconClass = "";
   }
-
   return (
     <div className="input-group">
       <div className="input-group-prepend">
@@ -38,9 +46,15 @@ const Input = ({
         }`}
         placeholder={label}
       />
-      {touched && error && (
-        <div className=" ml-5 pl-3 invalid-feedback">{error}</div>
-      )}
+      {touched &&
+        ((error && (
+          <div className=" ml-5 pl-3 text-left invalid-feedback">{error}</div>
+        )) ||
+          (warning && (
+            <div className="ml-5 pl-3 text-left valid-feedback text-warning">
+              {warning}
+            </div>
+          )))}
     </div>
   );
 };
@@ -48,7 +62,7 @@ Input.propTypes = {
   input: PropTypes.object,
   label: PropTypes.string,
   type: PropTypes.string.isRequired,
-  uiFor: PropTypes.string.isRequired
+  notification: PropTypes.bool
 };
 
 export default Input;
