@@ -12,7 +12,6 @@ const LoginForm = props => {
         <div className="mb-4">
           <Field
             component={Input}
-            className="mb-4"
             name="email"
             type="email"
             label="Email"

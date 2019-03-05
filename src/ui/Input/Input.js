@@ -10,7 +10,7 @@ const Input = ({
   type,
   meta: { touched, error, warning } = {}
 }) => {
-  let isValid = notification ? "" : "is-valid";
+  let isValid = notification === false ? "" : "is-valid";
   let iconClass;
   switch (type) {
     case "email":
