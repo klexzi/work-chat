@@ -25,7 +25,7 @@ const Input = ({
     case "phone":
       iconClass = "fas fa-phone";
       break;
-    case "organization-name":
+    case "organizationName":
       iconClass = "fas fa-globe";
       break;
     default:

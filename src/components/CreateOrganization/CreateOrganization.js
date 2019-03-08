@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
-import Transition from "react-transition-group/Transition";
 
 import Button from "../../ui/Button/Button";
 import Input from "../../ui/Input/Input";
@@ -10,9 +9,9 @@ import validateValue from "../../utils/validate-value";
 const CreateOrganization = props => {
   const classNames =
     props.transitionState === "entering"
-      ? "animated bounceInDown"
+      ? "animated bounceInLeft"
       : props.transitionState === "exiting"
-      ? "animated bounceOutDown"
+      ? "animated bounceOutRight"
       : null;
   return (
     <div className={classNames + " col-md-6 p-md-2 ml-4 ml-md-0 text-center"}>
@@ -25,7 +24,7 @@ const CreateOrganization = props => {
         <div className="mb-3">
           <Field
             component={Input}
-            name="organization-email"
+            name="organizationEmail"
             type="email"
             label="Organization Email"
           />
@@ -33,8 +32,8 @@ const CreateOrganization = props => {
 
         <Field
           component={Input}
-          name="organization-name"
-          type="organization-name"
+          name="organizationName"
+          type="organizationName"
           label="Organization Name"
         />
         <Button classes="btn primary-bg text-white btn-block rounded-pill btn-md-lg mt-3 mb-2">
@@ -58,15 +57,15 @@ CreateOrganization.propTypes = {
 
 const validate = values => {
   let errors = {};
-  let checkOrganizationName = validateValue(values["organization-name"]);
+  let checkOrganizationName = validateValue(values["organizationName"]);
   let emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  if (!values["organization-email"]) {
-    errors["organization-email"] = "required";
-  } else if (!values["organization-email"].match(emailRegex)) {
-    errors["organization-email"] = "invalid email address";
+  if (!values.organizationEmail) {
+    errors.organizationEmail = "required";
+  } else if (!values.organizationEmail.match(emailRegex)) {
+    errors.organizationEmail = "invalid email address";
   }
   if (checkOrganizationName !== "") {
-    errors["organization-name"] = checkOrganizationName;
+    errors.organizationName = checkOrganizationName;
   }
   return errors;
 };

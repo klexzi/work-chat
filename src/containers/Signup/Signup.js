@@ -16,6 +16,7 @@ export class Signup extends Component {
   };
   onSubmit = values => {
     console.log("final submit", values);
+    this.props.history.push("/verify-account");
   };
   render() {
     return (

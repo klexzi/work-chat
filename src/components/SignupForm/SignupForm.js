@@ -6,6 +6,8 @@ import Input from "../../ui/Input/Input";
 import Checkbox from "../../ui/Checkbox/Checkbox";
 import Button from "../../ui/Button/Button";
 import validateValue from "../../utils/validate-value";
+import validatePassword from "../../utils/validate-password";
+import confirmPassword from "../../utils/confirm-password";
 import normalizePhone from "../../utils/normalize-phone";
 import capitalize from "../../utils/capitalize";
 const SignupForm = props => {
@@ -48,7 +50,7 @@ const SignupForm = props => {
         <div className="mb-md-4 mb-3">
           <Field
             component={Input}
-            name="confirm-password"
+            name="confirmPassword"
             type="password"
             label="Confirm Password"
           />
@@ -98,6 +100,11 @@ const validate = values => {
     emailRegEx,
     "invalid email address"
   );
+  let checkPassword = validatePassword(values.password);
+  let checkConfirmPassword = confirmPassword(
+    values.password,
+    values.confirmPassword
+  );
 
   let errors = {};
   if (checkFirstname !== "") {
@@ -109,22 +116,11 @@ const validate = values => {
   if (checkEmail !== "") {
     errors.email = checkEmail;
   }
-  if (!values.password) {
-    errors.password = "required";
-  } else if (values.password.length < 8) {
-    errors.password = "password too short";
-  } else if (
-    values.password.match(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/) &&
-    !values.password.match(
-      /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/
-    )
-  ) {
-    errors.password = "weak password";
+  if (checkPassword !== "") {
+    errors.password = checkPassword;
   }
-  if (!values["confirm-password"]) {
-    errors["confirm-password"] = "required";
-  } else if (values["confirm-password"] !== values.password) {
-    errors["confirm-password"] = "password mismatch";
+  if (checkConfirmPassword !== "") {
+    errors.confirmPassword = checkConfirmPassword;
   }
   if (values.phone && values.phone.length < 15) {
     errors.phone = "not a valid phone number";

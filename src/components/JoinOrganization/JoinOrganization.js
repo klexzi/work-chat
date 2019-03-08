@@ -1,16 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
 import Input from "../../ui/Input/Input";
 import Button from "../../ui/Button/Button";
+import validateEmail from "../../utils/validate-email";
 
 const JoinOrganization = props => {
   const classNames =
     props.transitionState === "entering"
-      ? "animated bounceInDown"
-      : props.transitionState === "exiting"
-      ? "animated bounceOutDown"
+      ? "animated bounceInLeft"
+      : props.transitionState === "exit"
+      ? "animated bounceOutRight"
       : null;
   return (
     <div className={classNames + " col-md-6 p-md-2 ml-4 ml-md-0 text-center"}>
@@ -23,7 +23,7 @@ const JoinOrganization = props => {
       <form onSubmit={props.handleSubmit(props.onSubmit)}>
         <Field
           component={Input}
-          name="organization-email"
+          name="organizationEmail"
           type="email"
           label="Your Organization Email"
         />
@@ -46,20 +46,9 @@ JoinOrganization.propTypes = {
   switchState: PropTypes.func.isRequired
 };
 
-const validate = values => {
-  let errors = {};
-  let emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  if (!values["organization-email"]) {
-    errors["organization-email"] = "required";
-  } else if (!values["organization-email"].match(emailRegex)) {
-    errors["organization-email"] = "invalid email address";
-  }
-  return errors;
-};
-
 export default reduxForm({
   form: "SignupForm",
-  validate,
+  validate: validateEmail,
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true
 })(JoinOrganization);

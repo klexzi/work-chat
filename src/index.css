@@ -35,3 +35,12 @@ a {
 .primary-bg {
   background-color: #122b52;
 }
+
+.code-input {
+  background-color: #eaeaea;
+  width: 50px;
+  max-width: 50px;
+  height: 72px;
+  min-height: 72px;
+  border-radius: 22px 22px;
+}

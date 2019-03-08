@@ -14,7 +14,7 @@ class CompleteSignup extends Component {
   };
   animationTime = {
     enter: 300,
-    exit: 500
+    exit: 0
   };
   render() {
     return (
