@@ -11,7 +11,7 @@ export class VerificationCodeForm extends Component {
     input4: "",
     input5: "",
     input6: "",
-    codeNumber: ""
+    codeLength: 0
   };
   static propTypes = {
     uiFor: PropTypes.string.isRequired
@@ -29,19 +29,25 @@ export class VerificationCodeForm extends Component {
   }
   onSubmit = e => {
     e.preventDefault();
-    console.log(this.state.codeNumber);
-    this.props.handleSubmit(this.state.codeNumber);
+    let { input1, input2, input3, input4, input5, input6 } = this.state;
+    let code = input1 + input2 + input3 + input4 + input5 + input6;
+    console.log(code);
+    this.props.handleSubmit(code);
   };
   handleChange = event => {
     let { id, value } = event.target;
-    if (isNaN(value)) return;
-    if (value < 0 || value > 9) return;
+    if (isNaN(value) && value !== "") return;
+    if (+value < 0 || +value > 9) return;
     let obj = {};
     obj[id] = value;
     this.setState(prevState => {
-      return { ...obj, codeNumber: prevState.codeNumber + value };
+      return {
+        ...obj,
+        codeLength:
+          value === "" ? prevState.codeLength - 1 : prevState.codeLength + 1
+      };
     });
-    this.focusNextInput(id);
+    if (value !== "") this.focusNextInput(id);
   };
   focusNextInput = currentInput => {
     switch (currentInput) {
@@ -87,6 +93,7 @@ export class VerificationCodeForm extends Component {
               value={this.state.input1}
               className="col- code-input mr-1 mr-md-2 form-control form-control-lg"
               type="text"
+              required
             />
             <input
               ref={this.input2Ref}
@@ -95,6 +102,7 @@ export class VerificationCodeForm extends Component {
               value={this.state.input2}
               className="col- code-input mr-1 mr-md-2 form-control form-control-lg"
               type="text"
+              required
             />
             <input
               ref={this.input3Ref}
@@ -103,6 +111,7 @@ export class VerificationCodeForm extends Component {
               value={this.state.input3}
               className="col- code-input mr-1 mr-md-2 form-control form-control-lg"
               type="text"
+              required
             />
             <input
               ref={this.input4Ref}
@@ -111,6 +120,7 @@ export class VerificationCodeForm extends Component {
               value={this.state.input4}
               className="col- code-input mr-1 mr-md-2 form-control form-control-lg"
               type="text"
+              required
             />
             <input
               ref={this.input5Ref}
@@ -119,6 +129,7 @@ export class VerificationCodeForm extends Component {
               value={this.state.input5}
               className="col- code-input mr-1 mr-md-2 form-control form-control-lg"
               type="text"
+              required
             />
             <input
               ref={this.input6Ref}
@@ -127,10 +138,16 @@ export class VerificationCodeForm extends Component {
               value={this.state.input6}
               className="col- code-input form-control form-control-lg"
               type="text"
+              required
             />
           </div>
 
-          <Button classes="btn primary-bg text-white btn-block rounded-pill btn-md-lg mt-3 mb-2">
+          <Button
+            classes={`btn primary-bg text-white btn-block rounded-pill btn-md-lg mt-3 mb-2 ${
+              this.state.codeLength < 6 ? " disabled" : ""
+            }`}
+            disabled={this.state.codeLength < 6}
+          >
             Proceed <i className="ml-3 fas fa-arrow-right" />
           </Button>
         </form>
