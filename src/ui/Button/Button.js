@@ -8,8 +8,7 @@ const Button = props => {
   if (props)
     return (
       <button className={classes} disabled={props.disabled}>
-        {" "}
-        {props.children}{" "}
+        {props.children}
       </button>
     );
 };
