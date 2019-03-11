@@ -10,7 +10,7 @@ import Button from "../../ui/Button/Button";
 
 const ResetPasswordForm = props => {
   return (
-    <div className={" col-md-5 p-md-2 ml-4 ml-md-0 text-center"}>
+    <div className={" col-lg-6 col-md-9 p-md-2 ml-4 ml-md-0 text-center"}>
       <h4 className="text-center mt-2 mt-md-0 mb-3 mb-md-4">Reset Password</h4>
       <form onSubmit={props.handleSubmit(props.onSubmit)}>
         <div className="mb-3">

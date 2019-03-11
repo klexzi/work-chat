@@ -20,7 +20,7 @@ class Home extends Component {
           <h3 className="display-4">Work Chat</h3>
         </div>
         <div className="row d-flex align-items-center container mx-auto py-md-5 py-2">
-          <div className="col-md-5 px-0">
+          <div className="col-lg-5 px-0">
             <h4 className="mb-md-4 mb-1">
               Get Your Organization Communicating
             </h4>
@@ -45,12 +45,8 @@ class Home extends Component {
               </Button>
             </Link>
           </div>
-          <div className="col-md-5 mx-auto my-4">
-            <img
-              src={chatImg1}
-              className="img-fluid d-none d-md-block"
-              alt="chat svg"
-            />
+          <div className=" d-none d-md-block col-lg-5 mx-auto my-4">
+            <img src={chatImg1} className="img-fluid" alt="chat svg" />
           </div>
         </div>
       </div>

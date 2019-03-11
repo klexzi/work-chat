@@ -8,7 +8,7 @@ import validateEmail from "../../utils/validate-email";
 
 const ForgotPasswordForm = props => {
   return (
-    <div className={" col-md-5 p-md-2 ml-4 ml-md-0 text-center"}>
+    <div className={" col-lg-6 col-md-9 p-md-2 ml-4 ml-md-0 text-center"}>
       <h2 className="mb-4"> Forgot Password</h2>
 
       <p className="text-capitalize mb-4">

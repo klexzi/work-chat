@@ -6,10 +6,10 @@ import ChatSVG from "../../components/ChatSVG/ChatSVG";
 const ContactForm = props => {
   return (
     <React.Fragment>
-      <div className="col-md-6 d-none d-md-block">
+      <div className="col-lg-6 d-none d-lg-block">
         <ChatSVG />
       </div>
-      <div className="col-md-6 px-4 px-md-0 py-0">
+      <div className="col-lg-6 px-4 px-md-0 py-0">
         <div className="row justify-content-center">
           <div className="col-md-10">
             <SignupForm onSubmit={props.onSubmit} />

@@ -35,6 +35,9 @@ a {
 .primary-bg {
   background-color: #122b52;
 }
+.secondary-bg {
+  background-color: #eaeaea;
+}
 
 .code-input {
   background-color: #eaeaea;

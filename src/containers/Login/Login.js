@@ -11,10 +11,10 @@ class Login extends Component {
     return (
       <Page>
         <Panel>
-          <div className="col-md-6 d-none d-md-block">
+          <div className="col-lg-6 d-none d-lg-block">
             <ChatSVG />
           </div>
-          <div className="col-md-6 px-5 px-md-0 py-0">
+          <div className="col-lg-6 px-5 px-md-0 py-0">
             <div className="row justify-content-center">
               <div className="col-md-8 p-0">
                 <LoginForm />

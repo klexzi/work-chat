@@ -13,7 +13,11 @@ const JoinOrganization = props => {
       ? "animated bounceOutRight"
       : null;
   return (
-    <div className={classNames + " col-md-6 p-md-2 ml-4 ml-md-0 text-center"}>
+    <div
+      className={
+        classNames + " col-lg-6 col-md-9 p-md-2 ml-4 ml-md-0 text-center"
+      }
+    >
       <h2> Join Your Organization</h2>
       <h6 className="w-75 mx-auto mb-5">
         Connect with your colleagues and start communicating

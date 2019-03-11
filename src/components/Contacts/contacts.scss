@@ -1,0 +1,13 @@
+.contacts-area {
+  height: 100vh;
+}
+.tab {
+  font-size: 1.5rem;
+  color: #122b52;
+  opacity: 0.5;
+  cursor: pointer;
+}
+.tab-active {
+  border-bottom: solid 3px #122b52;
+  opacity: 1;
+}
