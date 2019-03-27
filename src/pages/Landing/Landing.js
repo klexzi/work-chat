@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import Home from "../Home/Home";
-import Chat from "../Chat/Chat";
+import Home from "../../containers/Home/Home";
+import Chat from "../../containers/Chat/Chat";
 
 export class Landing extends Component {
   // TODO: replace login state to use redux state

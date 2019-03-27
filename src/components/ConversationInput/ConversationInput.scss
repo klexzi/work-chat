@@ -1,0 +1,15 @@
+.conversation-input {
+  background: none;
+  border: none;
+  display: block;
+  height: auto;
+  resize: none;
+}
+.conversation-input:focus {
+  outline: none;
+}
+
+.conversation-input-area {
+  position: absolute;
+  bottom: 10px;
+}

@@ -1,0 +1,33 @@
+.message {
+  max-width: 400px;
+}
+.outgoing-message {
+  background-color: rgba(68, 129, 220, 0.5);
+}
+.incoming-message {
+  position: relative;
+  background-color: white;
+}
+.incoming-message::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-right-color: white;
+  border-left: 0;
+  border-top: 0;
+  margin-top: 0;
+  margin-left: -10px;
+}
+.file-message {
+  position: relative;
+  cursor: pointer;
+}
+.message-meta-file {
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+}

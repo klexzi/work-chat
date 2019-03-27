@@ -3,10 +3,11 @@ import Faker from "faker";
 
 import Avatar from "../../ui/Avatar/Avatar";
 import Search from "../../ui/Search/Search";
-import ChatTab from "../ChatTab/ChatTab";
-import ContactList from "../ContactList/ContactList";
-import ChatList from "../ChatList/ChatList";
+import ChatTab from "../../components/ChatTab/ChatTab";
+import ContactList from "../../components/ContactList/ContactList";
+import ChatList from "../../components/ChatList/ChatList";
 import "./contacts.scss";
+//TODO: profile would be gotten from store and passed as props
 const profile = {
   name: Faker.name.firstName() + " " + Faker.name.lastName(),
   imageUrl: Faker.image.avatar()
@@ -23,7 +24,7 @@ export class Contacts extends Component {
   render() {
     console.log(this.state);
     return (
-      <div className="col-lg-3 border contacts-area p-0">
+      <div className="col-lg-3 border chat-area p-0">
         <div className="font-weight-bold text-capitalize py-2 px-4 secondary-bg">
           organization name
         </div>

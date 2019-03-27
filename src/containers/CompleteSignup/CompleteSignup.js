@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Transition from "react-transition-group/Transition";
 
-import JoinOrganization from "../JoinOrganization/JoinOrganization";
-import CreateOrganization from "../CreateOrganization/CreateOrganization";
+import JoinOrganization from "../../components/JoinOrganization/JoinOrganization";
+import CreateOrganization from "../../components/CreateOrganization/CreateOrganization";
 
 class CompleteSignup extends Component {
   state = { joinOrganization: true, createOrganization: false };

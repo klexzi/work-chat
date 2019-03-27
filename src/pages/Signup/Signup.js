@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Page from "../../layout/Page/Page";
 import Panel from "../../layout/Panel/Panel";
-import ContactForm from "../../components/ContactForm/ContactForm";
-import CompleteSignup from "../../components/CompleteSignup/CompleteSignup";
+import ContactForm from "../../containers/ContactForm/ContactForm";
+import CompleteSignup from "../../containers/CompleteSignup/CompleteSignup";
 
 export class Signup extends Component {
   state = { stage: 1 };

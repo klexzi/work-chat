@@ -25,6 +25,8 @@ a {
 }
 .page {
   height: 100vh;
+  max-height: 100vh;
+  position: fixed;
   width: 100vw;
   margin: 0;
 }
@@ -35,10 +37,15 @@ a {
 .primary-bg {
   background-color: #122b52;
 }
+.info-text {
+  color: rgba(68, 129, 220, 0.7);
+}
 .secondary-bg {
   background-color: #eaeaea;
 }
-
+.chat-area {
+  height: 100vh;
+}
 .code-input {
   background-color: #eaeaea;
   width: 50px;

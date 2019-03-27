@@ -7,20 +7,20 @@ const Avatar = props => {
       props.uiFor === "profile-thumbnail"
         ? "52px"
         : props.uiFor === "profile-picture"
-        ? "356px"
-        : "70px",
+        ? "256px"
+        : "60px",
     height:
       props.uiFor === "profile-thumbnail"
         ? "52px"
         : props.uiFor === "profile-picture"
-        ? "356px"
-        : "69px"
+        ? "256px"
+        : "59px"
   };
   return (
     <div className="secondary-bg rounded rounded-circle" style={styles}>
       <img
         src={props.imageUrl}
-        className="img-fluid rounded rounded-circle"
+        className="img-fluid w-100 h-100 rounded rounded-circle"
         alt="profile"
       />
     </div>

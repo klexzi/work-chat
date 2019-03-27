@@ -4,6 +4,7 @@ import moment from "moment";
 
 import Avatar from "../../ui/Avatar/Avatar";
 import "./Contact.scss";
+import MessageStatus from "../MessageStatus/MessageStatus";
 const Contact = ({
   imageUrl,
   role,
@@ -21,23 +22,13 @@ const Contact = ({
       <div className="col-3 p-0">
         <Avatar imageUrl={imageUrl} />
       </div>
-      <div className="col-6 p-0 pt-2">
+      <div className="col-6 p-0">
         <div className="font-weight-bold text-truncate">{name}</div>
         <div className="small mt-2 text-capitalize text-truncate">
           {uiFor === "chat" && isTyping === true ? (
             <i>Typing...</i>
           ) : ownMessage === true ? (
-            <span className="small mr-1">
-              {messageStatus === "read" ? (
-                <i className="fas fa-check-circle" />
-              ) : messageStatus === "delivered" ? (
-                <i className="far fa-check-circle" />
-              ) : messageStatus === "sent" ? (
-                <i className="fas fa-circle" />
-              ) : (
-                <i className="far fa-clock" />
-              )}
-            </span>
+            <MessageStatus status={messageStatus} />
           ) : null}
           {uiFor === "chat" && lastMessage && !isTyping ? lastMessage : role}
         </div>

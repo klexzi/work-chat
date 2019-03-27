@@ -13,7 +13,7 @@ for (let i = 1; i <= 10; i++) {
     lastMessage: Faker.lorem.sentence(),
     date: Faker.date.recent().toString(),
     ownMessage: true,
-    isTyping: true,
+    isTyping: false,
     messageStatus: "",
     newMessageCount: 234
   });
