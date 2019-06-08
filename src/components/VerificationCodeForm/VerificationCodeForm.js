@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import Button from "../../ui/Button/Button";
+import xhrLoader from "../../assets/xhr-loader.gif";
 export class VerificationCodeForm extends Component {
   state = {
     input1: "",
@@ -146,20 +148,29 @@ export class VerificationCodeForm extends Component {
             classes={`btn primary-bg text-white btn-block rounded-pill btn-md-lg mt-3 mb-2 ${
               this.state.codeLength < 6 ? " disabled" : ""
             }`}
-            disabled={this.state.codeLength < 6}
+            disabled={
+              this.state.codeLength < 6 || this.props.verifyAccount.processing
+            }
           >
-            Proceed <i className="ml-3 fas fa-arrow-right" />
+            Verify
+            {this.props.verifyAccount.processing ? (
+              <span>
+                <img src={xhrLoader} alt="xhrLoader" className="img-fluid" />
+              </span>
+            ) : null}
           </Button>
         </form>
         <div className="mt-4 small text-center">
           {`Didn't get the ${linkName}`}?
-          <Link to="/login" className="mock-link text-info">
+          <span onClick={this.props.resendCode} className="mock-link text-info">
             &nbsp; Resend Code
-          </Link>
+          </span>
         </div>
       </div>
     );
   }
 }
 
-export default VerificationCodeForm;
+const mapStateToProps = state => ({ verifyAccount: state.verifyAccount });
+
+export default connect(mapStateToProps)(VerificationCodeForm);

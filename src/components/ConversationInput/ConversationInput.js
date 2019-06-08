@@ -27,7 +27,7 @@ class ConversationInput extends Component {
     if (e.key === "Enter" && !e.shiftKey && this.state.value.length > 0) {
       return setTimeout(() => {
         console.log(this.state.value);
-        this.setState({ value: "" });
+        this.setState({ value: "", row: 1 });
       });
     }
   };

@@ -10,6 +10,7 @@ import validatePassword from "../../utils/validate-password";
 import confirmPassword from "../../utils/confirm-password";
 import normalizePhone from "../../utils/normalize-phone";
 import capitalize from "../../utils/capitalize";
+import { validateUserEmail } from "../../store/api/validations";
 const SignupForm = props => {
   // TODO: Async validation for email
   return (
@@ -88,9 +89,13 @@ const SignupForm = props => {
   );
 };
 
-// const onSubmit = values => {
-//   console.log(values);
-// };
+const asyncValidate = values => {
+  return validateUserEmail(values.email).then(result => {
+    if (!result.valid) {
+      throw { email: result.message };
+    }
+  });
+};
 const validate = values => {
   let emailRegEx = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   let checkFirstname = validateValue(values.firstname);
@@ -145,6 +150,8 @@ const warn = values => {
 export default reduxForm({
   form: "SignupForm",
   validate,
+  asyncValidate,
+  asyncBlurFields: ["email"],
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true,
   warn

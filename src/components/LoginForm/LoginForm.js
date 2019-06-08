@@ -1,14 +1,18 @@
 import React from "react";
 import { reduxForm, Field } from "redux-form";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
+import { initLogin } from "../../store/actions/auth";
 import Button from "../../ui/Button/Button";
 import Input from "../../ui/Input/Input";
+import xhrLoader from "../../assets/xhr-loader.gif";
 
-const LoginForm = props => {
+let LoginForm = props => {
   return (
     <React.Fragment>
       <h4 className="text-center mt-2 mt-md-0 mb-3 mb-md-5">WorkChat Login</h4>
-      <form onSubmit={props.handleSubmit(onSubmit)}>
+      <form onSubmit={props.handleSubmit(props.login)}>
         <div className="mb-4">
           <Field
             component={Input}
@@ -28,8 +32,16 @@ const LoginForm = props => {
           />
         </div>
 
-        <Button classes="btn primary-bg text-white btn-block rounded-pill btn-lg mt-5 mb-2">
+        <Button
+          classes="btn primary-bg text-white btn-block rounded-pill btn-lg mt-5 mb-2"
+          disabled={props.auth.processing}
+        >
           Login
+          {props.auth.processing ? (
+            <span>
+              <img src={xhrLoader} alt="xhrLoader" className="img-fluid" />
+            </span>
+          ) : null}
         </Button>
         <div className="d-flex">
           <Link to="/signup" className="small link-item pull-left">
@@ -46,10 +58,6 @@ const LoginForm = props => {
     </React.Fragment>
   );
 };
-const onSubmit = values => {
-  console.log(values);
-};
-
 const validate = values => {
   let errors = {};
   if (!values.email) {
@@ -61,6 +69,17 @@ const validate = values => {
   return errors;
 };
 
+const mapStateToProps = state => ({ auth: state.auth });
+const mapDispatchToProps = dispatch => ({
+  login: payload => {
+    dispatch(initLogin(payload));
+  }
+});
+
+LoginForm = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginForm);
 export default reduxForm({
   form: "loginForm", // a unique identifier for this form
   validate // <--- validation function given to redux-form

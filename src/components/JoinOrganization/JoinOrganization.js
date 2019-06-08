@@ -1,9 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
+
 import Input from "../../ui/Input/Input";
 import Button from "../../ui/Button/Button";
 import validateEmail from "../../utils/validate-email";
+import { verifyInvitation } from "../../store/api/validations";
 
 const JoinOrganization = props => {
   const classNames =
@@ -50,9 +52,24 @@ JoinOrganization.propTypes = {
   switchState: PropTypes.func.isRequired
 };
 
+const asyncValidate = values => {
+  console.log("values", values);
+  return verifyInvitation(values.email, values.organizationEmail).then(
+    result => {
+      if (result.valid === false) {
+        throw {
+          organizationEmail: result.message
+        };
+      }
+    }
+  );
+};
+
 export default reduxForm({
   form: "SignupForm",
   validate: validateEmail,
+  asyncValidate,
+  asyncBlurFields: ["organizationEmail"],
   destroyOnUnmount: false,
   forceUnregisterOnUnmount: true
 })(JoinOrganization);

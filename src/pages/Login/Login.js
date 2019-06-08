@@ -1,12 +1,24 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
 import LoginForm from "../../components/LoginForm/LoginForm";
 import Panel from "../../layout/Panel/Panel";
 import ChatSVG from "../../components/ChatSVG/ChatSVG";
 import Page from "../../layout/Page/Page";
+import { AlertNotification } from "../../components/AlertNotification/AlertNotification";
 
 class Login extends Component {
   state = {};
 
+  componentDidUpdate() {
+    if (this.props.auth.authenticated) {
+      if (this.props.auth.isVerified) {
+        this.props.history.push("/");
+      } else {
+        this.props.history.push("/verify-account");
+      }
+    }
+  }
   render() {
     return (
       <Page>
@@ -21,10 +33,16 @@ class Login extends Component {
               </div>
             </div>
           </div>
+          {this.props.auth.error === true && (
+            <AlertNotification type="error" message={this.props.auth.message} />
+          )}
         </Panel>
       </Page>
     );
   }
 }
 
-export default Login;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+export default connect(mapStateToProps)(Login);

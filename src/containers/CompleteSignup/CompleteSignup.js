@@ -29,7 +29,7 @@ class CompleteSignup extends Component {
             return (
               <JoinOrganization
                 switchState={this.switchState}
-                onSubmit={this.props.onSubmit}
+                onSubmit={this.props.joinOrganization}
                 transitionState={state}
               />
             );
@@ -45,7 +45,7 @@ class CompleteSignup extends Component {
             return (
               <CreateOrganization
                 switchState={this.switchState}
-                onSubmit={this.props.onSubmit}
+                onSubmit={this.props.createOrganization}
                 transitionState={state}
               />
             );

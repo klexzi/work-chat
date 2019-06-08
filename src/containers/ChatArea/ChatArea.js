@@ -9,7 +9,7 @@ const ChatArea = ({ chatSelected }) => {
   return (
     <div className="col-lg-9">
       <div className="row">
-        {chatSelected === true ? (
+        {chatSelected === false ? (
           <div
             style={{ height: "100vh" }}
             className="col-lg-12 d-flex row align-items-center justify-content-center"
